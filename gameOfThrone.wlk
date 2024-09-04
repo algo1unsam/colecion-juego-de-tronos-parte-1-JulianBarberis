@@ -1,17 +1,26 @@
 object daenerys{
     const property artefactos  = []
     const property historial = []
-    const max = 2
+    var property max = 2
 
     method levantar(objeto) {
         if(artefactos.size() < max){
         artefactos.add(objeto)
         }
-        historial.in
+        historial.add(artefactos)
     }
 
-    method tiene() = artefactos
-    method tieneTotal() = artefactos + rocadragon.artefactos()
+    method llegoRocadragon(){
+        rocadragon.guardar()
+        artefactos.clear()
+    }
+
+    method coleccion(){
+        return artefactos + rocadragon.artefactos()
+    }
+    
+    method tieneObjeto(objeto) = self.coleccion().contains(objeto)
+
 }
 
 object rocadragon{
@@ -19,19 +28,8 @@ object rocadragon{
     
     method guardar(){
         artefactos.addAll(daenerys.artefactos())
-        daenerys.artefactos().clear()
+
     }
-}
-
-object coleccion{
-    const property artefactos  = []
-
-    method artefactosDaenerys(){
-        artefactos.addAll(daenerys.artefactos())
-        artefactos.addAll(rocadragon.artefactos())        
-    }
-
-    method tieneObjeto(objeto) = artefactos.contains(objeto)
 }
 
 object espada {}
